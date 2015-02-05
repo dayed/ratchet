@@ -6,6 +6,7 @@
  */
 
 /* jshint node: true */
+/* eslint-env node */
 module.exports = function (grunt) {
   'use strict';
 
@@ -227,7 +228,7 @@ module.exports = function (grunt) {
       options: {
         jshintrc: 'js/.jshintrc'
       },
-      grunt: {
+      gruntfile: {
         src: ['Gruntfile.js', 'grunt/*.js']
       },
       src: {
@@ -242,8 +243,23 @@ module.exports = function (grunt) {
       options: {
         config: 'js/.jscsrc'
       },
-      grunt: {
-        src: '<%= jshint.grunt.src %>'
+      gruntfile: {
+        src: '<%= jshint.gruntfile.src %>'
+      },
+      src: {
+        src: '<%= jshint.src.src %>'
+      },
+      docs: {
+        src: '<%= jshint.docs.src %>'
+      }
+    },
+
+    eslint: {
+      options: {
+        config: 'js/.eslintrc'
+      },
+      gruntfile: {
+        src: '<%= jshint.gruntfile.src %>'
       },
       src: {
         src: '<%= jshint.src.src %>'
